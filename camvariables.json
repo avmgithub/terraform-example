@@ -166,12 +166,11 @@
         "group": "virtualmachine"
     },
     {
-        "default": "debian-small",
-        "description": "Hostname of the virtual instance (small flavor) to be deployed",
+	"description": "Week of the month to patch",
         "hidden": false,
         "immutable": false,
-        "label": "Hostname",
-        "name": "hostname",
+        "label": "Patch Week",
+        "name": "patchweek",
         "required": true,
         "secured": false,
         "type": "string",
@@ -207,18 +206,5 @@
         "secured": false,
         "type": "string",
         "group": "virtualmachine"
-    },
-    {
-        "default": "Week 1",
-        "description": "Week of the month to patch",
-        "hidden": false,
-        "immutable": false,
-        "label": "Patch Week",
-        "name": "patchweek",
-        "required": true,
-        "secured": false,
-        "type": "string",
-        "group": "virtualmachine"
     }
-  ]
 }
