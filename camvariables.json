@@ -1,152 +1,193 @@
 {
-    "terraform_version": "~> 0.12.0",
-    "input_namespaces": [],
-    "output_namespace": "",
-    "template_input_params": [
-        {
-            "name": "servicename",
-            "type": "string",
-            "description": "Specify the service name you want to create",
-            "hidden": false,
-            "label": "Service Name",
-            "default": "cloudantNoSQLDB",
-            "secured": false,
-            "required": true,
-            "immutable": false
-        },
-        {
-            "name": "plan",
-            "type": "string",
-            "description": "Serivce Plan",
-            "hidden": false,
-            "label": "Service Plan",
-            "secured": false,
-            "required": true,
-            "immutable": false,
-            "options": [
-                {
-                    "value": "lite",
-                    "label": "Lite",
-                    "default": "true"
-                },
-                {
-                    "value": "standard",
-                    "label": "Standard"
-                },
-                {
-                    "value": "dedicated hardware",
-                    "label": "Dedicated Hardware"
-                }
-            ]
-        },
-        {
-            "name": "group",
-            "type": "string",
-            "description": "Resource group to place the service.",
-            "hidden": false,
-            "label": "Resource Group",
-            "default": "default",
-            "secured": false,
-            "required": true,
-            "immutable": false
-        },
-        {
-            "name": "region",
-            "type": "string",
-            "description": "IBM Cloud region.",
-            "hidden": false,
-            "label": "Region",
-            "secured": false,
-            "required": true,
-            "immutable": false,
-            "options": [
-                {
-                    "value": "us-south",
-                    "label": "US South",
-                    "default": "true"
-                },
-                {
-                    "value": "us-east",
-                    "label": "US East"
-                },
-                {
-                    "value": "au-syd",
-                    "label": "Sydney"
-                },
-                {
-                    "value": "eu-de",
-                    "label": "Germany"
-                },
-                {
-                    "value": "eu-gb",
-                    "label": "United Kingdom"
-                }
-            ]
-        }
-    ],
-    "template_output_params": [
-        {
-            "name": "access_urls",
-            "label": "access_urls",
-            "description": "access_urls",
-            "type": "string",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        },
-        {
-            "name": "host",
-            "label": "host ",
-            "description": "host",
-            "type": "string",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        },
-        {
-            "name": "port",
-            "label": "port ",
-            "description": "port",
-            "type": "string",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        },
-        {
-            "name": "url",
-            "label": "url ",
-            "description": "url",
-            "type": "url",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        },
-        {
-            "name": "username",
-            "label": "username ",
-            "description": "username",
-            "type": "string",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        },
-        {
-            "name": "password",
-            "label": "password ",
-            "description": "password",
-            "type": "string",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        },
-        {
-            "name": "service_instance_name",
-            "label": "service_instance_name",
-            "description": "service_instance_name",
-            "type": "string",
-            "hidden": false,
-            "secured": false,
-            "group_name": "output_group"
-        }
-    ]
+  "terraform_version": "~> 0.11.0",
+  "input_datatypes": [
+  ],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+        "description": "Public SSH key used to connect to the virtual guest",
+        "hidden": false,
+        "immutable": false,
+        "label": "Public SSH Key",
+        "name": "public_ssh_key",
+        "required": true,
+        "secured": false,
+        "type": "string",
+	      "regex": "^ssh-rsa AAAA[0-9A-Za-z+/]+[=]{0,3}( [^@]+@[^@]+| [^@]+){0,1}$",
+        "group": "virtualmachine"
+    },
+    {
+        "description": "SoftLayer datacenter where infrastructure resources will be deployed",
+        "hidden": false,
+        "immutable": false,
+        "label": "SoftLayer Data Center",
+        "name": "datacenter",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "options": [
+          {
+              "value" : "ams01",
+              "label": "Amsterdam 01, The Netherlands"
+          },
+          {
+              "value" : "ams03",
+              "label": "Amsterdam 03, The Netherlands"
+          },
+          {
+              "value" : "che01",
+              "label": "Chennai, India"
+          },
+          {
+              "value" : "dal01",
+              "label": "Dallas 01, USA"          },
+          {
+              "value" : "dal02",
+              "label": "Dallas 02, USA"
+          },
+          {
+              "value" : "dal05",
+              "label": "Dallas 05, USA"
+          },
+          {
+              "value" : "dal06",
+              "label": "Dallas 06, USA"
+          },
+          {
+              "value" : "dal07",
+              "label": "Dallas 07, USA"
+          },
+          {
+              "value" : "dal09",
+              "label": "Dallas 09, USA",
+              "default" : "true"
+          },
+          {
+              "value" : "dal10",
+              "label": "Dallas 10, USA"
+          },
+          {
+              "value" : "fra02",
+              "label": "Frankfurt, Germany"
+          },
+          {
+              "value" : "hkg02",
+              "label": "Hong Kong, China"
+          },
+          {
+              "value" : "hou02",
+              "label": "Houston, USA"
+          },
+          {
+              "value" : "lon02",
+              "label": "London, England"
+          },
+          {
+              "value" : "mel01",
+              "label": "Melbourne, Australia"
+          },
+          {
+              "value" : "mil01",
+              "label": "Milan, Italy"
+          },
+          {
+              "value" : "mon01",
+              "label": "Montreal, Canada"
+          },
+          {
+              "value" : "osl01",
+              "label": "Oslo, Norway"
+          },
+          {
+              "value" : "par01",
+              "label": "Paris, France"
+          },
+          {
+              "value" : "mex01",
+              "label": "Querétaro, Mexico"
+          },
+          {
+              "value" : "sjc01",
+              "label": "San Jose 01, USA"
+          },
+          {
+              "value" : "sjc03",
+              "label": "San Jose 03, USA"
+          },
+          {
+              "value" : "sao01",
+              "label": "Sao Paulo, Brazil"
+          },
+          {
+              "value" : "sea01",
+              "label": "Seattle, USA"
+          },
+          {
+              "value" : "seo01",
+              "label": "Seoul 01, Korea"
+          },
+          {
+              "value" : "sng01",
+              "label": "Singapore, Singapore"
+          },
+          {
+              "value" : "syd01",
+              "label": "Sydney, Australia"
+          },
+          {
+              "value" : "tok02",
+              "label": "Tokyo, Japan"
+          },
+          {
+              "value" : "tor01",
+              "label": "Toronto, Canada"
+          },
+          {
+              "value" : "wdc01",
+              "label": "Washington, D.C. 01, USA"
+          },
+          {
+              "value" : "wdc04",
+              "label": "Washington, D.C. 04, USA"
+          }
+        ],
+        "group": "virtualmachine"
+    },
+    {
+        "default": "debian-small",
+        "description": "Hostname of the virtual instance (small flavor) to be deployed",
+        "hidden": false,
+        "immutable": false,
+        "label": "Hostname",
+        "name": "hostname",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "group": "virtualmachine"
+    },
+    {
+        "default": "sample.com",
+        "description": "Domain of the virtual instance to be deployed",
+        "hidden": false,
+        "immutable": false,
+        "label": "VM Domain",
+        "name": "domain",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "group": "virtualmachine"
+    }
+  ]
 }
