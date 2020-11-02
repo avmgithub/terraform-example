@@ -175,6 +175,25 @@
         "required": true,
         "secured": false,
         "type": "string",
+	"options": [
+          {
+              "value" : "Week 1",
+              "label": "Week 1",
+	      "default" : "true"
+          },
+          {
+              "value" : "Week 2",
+              "label": "Week 2"
+          },
+          {
+              "value" : "Week 3",
+              "label": "Week 3"
+          },
+          {
+              "value" : "Week 4",
+              "label": "Week 4"
+          }
+        ],
         "group": "virtualmachine"
     },
     {
@@ -184,6 +203,18 @@
         "immutable": false,
         "label": "VM Domain",
         "name": "domain",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "group": "virtualmachine"
+    },
+    {
+        "default": "Week 1",
+        "description": "Week of the month to patch",
+        "hidden": false,
+        "immutable": false,
+        "label": "Patch Week",
+        "name": "patchweek",
         "required": true,
         "secured": false,
         "type": "string",
