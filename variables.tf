@@ -1,21 +1,16 @@
-variable "servicename" {
-  type                        = "string"
-  description                 = "Specify the service name you want to create"
-  default                     = "cloudantNoSQLDB"
+variable "public_ssh_key" {
+  description = "Public SSH key used to connect to the virtual guest"
 }
 
-variable "plan" {
-  type                        = "string"
-  description                 = "Specify the corresponding plan for the service you selected"
+variable "datacenter" {
+  description = "Softlayer datacenter where infrastructure resources will be deployed"
 }
 
-variable "group" {
-  type                        = "string"
-  description                 = "IBM Cloud resource group"
+variable "hostname" {
+  description = "Hostname of the virtual instance (small flavor) to be deployed"
+  default     = "debian-small"
 }
 
-variable "region" {
-  type                        = "string"
-  description                 = "IBM Cloud region"
-  default                     = "eu-gb"
+variable "domain" {
+  description = "VM domain"
 }
